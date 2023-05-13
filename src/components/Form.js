@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
-import { StateContext } from "../context/state";
+import React, { useContext, useState } from 'react';
+import { StateContext } from '../context/state';
+import Links from './Links';
 
 export default function Form() {
-  const { name, setName } = useContext(StateContext);
+  const { name, setName, bio, setBio } = useContext(StateContext);
 
   return (
     <>
@@ -23,15 +24,21 @@ export default function Form() {
           </article>
           <article>
             <label htmlFor="bio">Bio</label>
-            <textarea name="bio" id="bio" cols="30" rows="5" placeholder="Tell us something about yourself"></textarea>
-          </article>
-          <article>
-            <label htmlFor="links">Links</label>
-            <input type="text" name="link" id="link" placeholder="add your links to your socials" />
+            <textarea
+              name="bio"
+              id="bio"
+              cols="30"
+              rows="5"
+              placeholder="Tell us something about yourself"
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+            ></textarea>
           </article>
         </form>
+        <article className="mt-3">
+          <Links />
+        </article>
       </div>
-      
     </>
   );
 }

@@ -2,7 +2,7 @@ import { StateContext } from '../context/state';
 import React, { useContext } from 'react';
 
 export default function Phone() {
-  const { name } = useContext(StateContext);
+  const { name, bio, links } = useContext(StateContext);
 
   return (
     <>
@@ -18,7 +18,19 @@ export default function Phone() {
             <h1 className="text-center text-xl font-bold text-slate-300">
               {name}
             </h1>
+            <p className="mt-4 text-center text-sm text-slate-400">{bio}</p>
           </article>
+
+          <ul className="mt-8 text-center">
+            {links.map((link, index) => (
+              <li
+                key={index}
+                className="mb-4 py-3 px-2 bg-slate-700 rounded shadow text-white font-bold cursor-pointer pop"
+              >
+                {link.title}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>
