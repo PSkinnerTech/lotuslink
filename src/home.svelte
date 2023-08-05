@@ -1,4 +1,5 @@
 <script>
+  import Wallet from './components/Wallet.svelte';
 </script>
 
 <div class="main">
@@ -20,6 +21,7 @@
       <a href="https://cookbook.arweave.dev" target="_blank"
         >Explore the Arweave Cookbook</a
       >
+      <Wallet />
     </div>
   </div>
 </div>
