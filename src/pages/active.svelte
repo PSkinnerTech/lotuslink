@@ -1,10 +1,17 @@
-<script lang='ts'>
+<script lang="ts">
   import PhoneDisplay from '../components/ui/PhoneDisplay.svelte';
   import Links from '../components/ui/Links.svelte';
+  import BalanceCheck from '../components/ui/BalanceCheck.svelte';
   import { setContext } from 'svelte';
 
+  type LinkType = {
+    title: string;
+    url: string;
+    id: string;
+  };
+
   let link = '';
-  let links = [];
+  let links: LinkType[] = [];
   const setLink = value => link = value;
   const setLinks = value => links = value;
   const handleSubmit = () => { /* implementation */ };
@@ -16,7 +23,8 @@
 <div class="main">
   <div class="content">
     <div class="overlay">
-      <PhoneDisplay />
+      <BalanceCheck {walletAddress} />
+      <PhoneDisplay {links} />
       <Links />
     </div>
   </div>

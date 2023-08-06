@@ -1,10 +1,12 @@
 <script lang="ts">
     import { getContext } from "svelte";  
+    
     type LinkType = {
-      title: string;
-      id: string; // or number, depending on what the ID is
-      url: string;
+        title: string;
+        url: string;
+        id: string;
     };
+
 
     const { links, setLinks, handleDelete: deleteLink } = getContext("StateContext") as {
       links: LinkType[];
@@ -29,12 +31,14 @@
             id: newId, 
             url: forms[index].link
         };
-        setLinks([...links, newLink]);
-        forms[index].linkName = '';
-        forms[index].link = '';
-        forms[index].id = newId;
-        forms = [...forms, { link: '', linkName: '', showForm: false, id: '' }];
-    }
+        // Create a completely new array with the new link
+        setLinks(links.concat(newLink));
+            forms[index].linkName = '';
+            forms[index].link = '';
+            forms[index].id = newId;
+            forms = [...forms, { link: '', linkName: '', showForm: false, id: '' }];
+}
+
 
     function toggleForm(index) {
         forms[index].showForm = !forms[index].showForm;
