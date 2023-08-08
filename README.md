@@ -1,49 +1,62 @@
-# Svelte + TS + Vite
+# LotusLink
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+LotusLink is a decentralized application (dApp) that empowers users to create a Link Page on the Arweave Blockchain. By leveraging the permanence and ownership capabilities of the blockchain, users can own their link page forever with a one-time payment.
 
-## Recommended IDE Setup
+## Features
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+- **Link Page Generator**: Create a personalized link page with custom links, and mint it onto the Arweave Blockchain.
+- **Arconnect Integration**: Authorization and Authentication are handled securely using Arconnect, ensuring a seamless user experience.
+- **Arweave Blockchain**: Your link page is yours forever. Once minted, it resides on the Arweave Blockchain, providing true ownership without recurring fees.
+- **Svelte Framework**: Built using Svelte, LotusLink utilizes hash routing to enable a multi-page application experience on the Arweave Blockchain.
+- **Profile Image Storage**: Profile images are stored using a user's unique ArDrive account. If a user doesn't have an ArDrive account, one will be created upon minting their first link page.
+- **One-Time Payment**: Unlike traditional services that require monthly subscriptions, LotusLink requires only a minimum of 1.6 AR to mint a link page, providing lifetime ownership.
 
-## Need an official Svelte framework?
+## Why LotusLink?
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+The traditional approach to hosting link pages often involves recurring payments and lack of true ownership. LotusLink disrupts this model by providing a platform where users pay once and own their link page forever. This not only ensures cost-effectiveness but also aligns with the decentralized ethos of true ownership and control.
 
-## Technical considerations
+## Getting Started
 
-**Why use this over SvelteKit?**
+### Prerequisites
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+- Arconnect Wallet with a minimum balance of 1.6 AR.
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+### Installation
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+1. Clone the repository
+   \`\`\`bash
+   git clone https://github.com/PSkinnerTech/lotuslink.git
+   \`\`\`
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+2. Navigate to the project directory
+   \`\`\`bash
+   cd lotuslink
+   \`\`\`
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+3. Install dependencies
+   \`\`\`bash
+   npm install
+   \`\`\`
 
-**Why include `.vscode/extensions.json`?**
+4. Start the development server
+   \`\`\`bash
+   npm run dev
+   \`\`\`
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+5. Open your browser and navigate to `http://localhost:5173`.
 
-**Why enable `allowJs` in the TS template?**
+## Contributing
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+Feel free to contribute to LotusLink by submitting pull requests or reporting issues.
 
-**Why is HMR not preserving my local component state?**
+## License
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+[MIT License](LICENSE)
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+## Contact
 
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
-# arconnect-svelte-kit
-# lotuslink
+For any inquiries or feedback, please contact [me@patrickskinner.tech](mailto:me@patrickskinner.tech).
+
+---
+
+Built with ❤️ by [@PSkinnerTech]
