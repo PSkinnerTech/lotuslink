@@ -1,17 +1,11 @@
 <script lang="ts">
-    import { getContext } from "svelte";  
-    
+    import { getContext, setContext } from "svelte";  
+    import { links } from `./store.js`;
+
     type LinkType = {
-        title: string;
-        url: string;
-        id: string;
-    };
-
-
-    const { links, setLinks, handleDelete: deleteLink } = getContext("StateContext") as {
-      links: LinkType[];
-      setLinks: (value: LinkType[]) => void;
-      handleDelete: (id: string) => void;
+      title: string;
+      url: string;
+      id: string;
     };
 
     let forms = [{ link: '', linkName: '', showForm: false, id: '' }];
@@ -31,14 +25,15 @@
             id: newId, 
             url: forms[index].link
         };
-        // Create a completely new array with the new link
-        setLinks(links.concat(newLink));
-            forms[index].linkName = '';
-            forms[index].link = '';
-            forms[index].id = newId;
-            forms = [...forms, { link: '', linkName: '', showForm: false, id: '' }];
-}
 
+        // Update the store
+        links.update(currentLinks => [...currentLinks, newLink]);
+
+        forms[index].linkName = '';
+        forms[index].link = '';
+        forms[index].id = newId;
+        forms = [...forms, { link: '', linkName: '', showForm: false, id: '' }];
+    }
 
     function toggleForm(index) {
         forms[index].showForm = !forms[index].showForm;
@@ -46,7 +41,8 @@
 
     function handleDelete(index) {
         const idToDelete = forms[index].id;
-        deleteLink(idToDelete);
+        // Update the store
+        links.update(currentLinks => currentLinks.filter(link => link.id !== idToDelete));
         forms = forms.filter((_, i) => i !== index);
         if (forms.length === 0) {
             forms = [{ link: '', linkName: '', showForm: false, id: '' }];
