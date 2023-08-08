@@ -24,7 +24,7 @@
       await (window as any).arweaveWallet.connect(
         ['ACCESS_ADDRESS'], // request permissions to read the active address
         {
-          name: "Your App Name", // provide some extra info for our app
+          name: "LotusLink", // provide some extra info for our app
           logo: "URL to your app logo"
         }
       );

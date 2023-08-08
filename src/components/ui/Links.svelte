@@ -1,15 +1,11 @@
 <script lang="ts">
-    import { getContext } from "svelte";  
+    import { getContext, setContext } from "svelte";  
+    import { links } from `./store.js`;
+
     type LinkType = {
       title: string;
-      id: string; // or number, depending on what the ID is
       url: string;
-    };
-
-    const { links, setLinks, handleDelete: deleteLink } = getContext("StateContext") as {
-      links: LinkType[];
-      setLinks: (value: LinkType[]) => void;
-      handleDelete: (id: string) => void;
+      id: string;
     };
 
     let forms = [{ link: '', linkName: '', showForm: false, id: '' }];
@@ -29,7 +25,10 @@
             id: newId, 
             url: forms[index].link
         };
-        setLinks([...links, newLink]);
+
+        // Update the store
+        links.update(currentLinks => [...currentLinks, newLink]);
+
         forms[index].linkName = '';
         forms[index].link = '';
         forms[index].id = newId;
@@ -42,7 +41,8 @@
 
     function handleDelete(index) {
         const idToDelete = forms[index].id;
-        deleteLink(idToDelete);
+        // Update the store
+        links.update(currentLinks => currentLinks.filter(link => link.id !== idToDelete));
         forms = forms.filter((_, i) => i !== index);
         if (forms.length === 0) {
             forms = [{ link: '', linkName: '', showForm: false, id: '' }];

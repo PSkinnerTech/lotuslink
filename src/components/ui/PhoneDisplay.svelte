@@ -12,13 +12,13 @@
 
     <div class="p-4">
       <h2 class="mb-4 text-xl font-semibold">Your Page Title</h2>
-      <ul>
-        {#each links as link (link.title)}
-          <li>
-            <a href={link.url} class="block py-2 px-4 bg-blue-500 text-white rounded mb-2">{link.title}</a>
-          </li>
-        {/each}
-      </ul>
+        <ul>
+          {#each links as link (link.id)}
+            <li>
+              <a href={link.url} class="block text-white border border-white rounded-full px-4 py-2 bg-transparent w-full text-center">{link.title}</a>
+            </li>
+          {/each}
+       </ul>    
     </div>
   </div>
   
